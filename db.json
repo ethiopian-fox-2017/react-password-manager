@@ -1,0 +1,28 @@
+{
+  "passwords": [
+    {
+      "id": 1,
+      "url": "url",
+      "username": "username",
+      "password": "password"
+    },
+    {
+      "id": 2,
+      "url": "url 2",
+      "username": "username",
+      "password": "password"
+    },
+    {
+      "id": 3,
+      "url": "url_url_url",
+      "username": "username_username",
+      "password": "password"
+    },
+    {
+      "url": "url",
+      "username": "username",
+      "password": "password",
+      "id": 4
+    }
+  ]
+}
