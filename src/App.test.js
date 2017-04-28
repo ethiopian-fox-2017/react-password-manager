@@ -28,7 +28,7 @@ describe('with redux render testing', () => {
         <center>
         <fieldset>
           <legend>Password-List</legend>
-          <Search />
+          <center><Search /></center>
           <PasswordList />
         </fieldset>
         </center>

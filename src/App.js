@@ -18,9 +18,9 @@ class App extends Component {
           </div>
           <PasswordForm />
           <center>
-          <fieldset style={{width:'80%', padding:'40px', marginTop:'30px'}}>
-            <legend>Password-List</legend>
-            <Search />
+          <fieldset style={{width:'80%', padding:'40px', marginTop:'30px', marginBottom:'30px', border: "3px groove", textAlign:'left'}}>
+            <legend><b>Password-List</b></legend>
+            <center><Search /></center>
             <PasswordList />
           </fieldset>
           </center>

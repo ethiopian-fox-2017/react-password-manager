@@ -13,7 +13,7 @@ const Search = props => (
       <input
         type='text'
         placeholder='Search by URL here...'
-        style={{width: '300px', height: '20px', padding: '10px', fontSize:'15pt'}}
+        style={{width: '300px', height: '20px', padding: '10px', fontSize:'15pt', marginBottom:'20px'}}
         onChange={e => props.setSearchKeyword(e.target.value)}
       />
     </form>

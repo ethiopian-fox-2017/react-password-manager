@@ -2,7 +2,6 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 import { connect } from 'react-redux';
 import { editData } from '../actions';
@@ -48,7 +47,7 @@ class Edit extends React.Component {
         onTouchTap={this.handleClose}
       />,
       <FlatButton
-        label="SAVE"
+        label="SAVE CHANGES"
         primary={true}
         keyboardFocused={true}
         onTouchTap={this.handleClose}
@@ -61,7 +60,7 @@ class Edit extends React.Component {
 
     return (
       <div>
-        <button onTouchTap={this.handleOpen}>
+        <button onTouchTap={this.handleOpen} style={{backgroundColor:"orange", padding:"10px", borderRadius:"15px", color:"white", outline:"none"}}>
           EDIT
         </button>
         <Dialog

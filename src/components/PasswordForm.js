@@ -2,14 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addData } from '../actions';
 
-const styles = {
-  form: {
-    padding: '10px',
-    width: '250px',
-    marginTop: 10
-  }
-}
-
 class PasswordForm extends React.Component {
   constructor(props){
     super(props)
@@ -30,31 +22,34 @@ class PasswordForm extends React.Component {
     return (
       <div>
         <center>
-          <form style={styles.form} onSubmit={(e) => {
+          <form onSubmit={(e) => {
             e.preventDefault();
             this.props.addData(this.state);
             this.setState({url: '', username: '', password: ''})
             }
           }>
-          <fieldset>
-            <legend>Password-Form</legend>
+          <fieldset style={{width: '300px', padding: '20px', marginTop: '30px', border: "3px groove", textAlign:'left'}}>
+            <legend><b>Password-Form</b></legend>
               <table>
                <tbody>
                   <tr>
-                    <td>URL</td>
-                    <td><input type="text" name="url" onChange={this.handleChange.bind(this)} value={this.state.url}/></td>
+                    <td style={{fontSize:'15pt'}}>URL</td>
+                    <td><input type="text" name="url" onChange={this.handleChange.bind(this)} value={this.state.url} style={{width: '300px', height: '20px', padding: '10px', fontSize:'15pt'}} placeholder="input URL here..."/></td>
                   </tr>
                   <tr>
-                    <td>Username</td>
-                    <td><input type="text" name="username" onChange={this.handleChange.bind(this)} value={this.state.username}/></td>
+                    <td style={{fontSize:'15pt'}}>Username</td>
+                    <td><input type="text" name="username" onChange={this.handleChange.bind(this)} value={this.state.username} style={{width: '300px', height: '20px', padding: '10px', fontSize:'15pt'}} placeholder="input Username here..."/></td>
                   </tr>
                   <tr>
-                    <td>Password</td> 
-                    <td><input type="text" name="password" onChange={this.handleChange.bind(this)} value={this.state.password}/></td>
+                    <td style={{fontSize:'15pt'}}>Password</td>
+                    <td><input type="text" name="password" onChange={this.handleChange.bind(this)} value={this.state.password} style={{width: '300px', height: '20px', padding: '10px', fontSize:'15pt'}} placeholder="input Password here..."/></td>
                   </tr>
                   <tr>
                     <td></td>
-                    <td><input type="submit" value="SAVE" /></td>
+                    <td style={{textAlign:"right"}}><button
+                          type="submit"
+                          style={{backgroundColor:"green", padding:"10px", borderRadius:"15px", color:"white", width:"100px", fontSize:"15pt", outline:"none"}}
+                        >ADD</button></td>
                   </tr>
                 </tbody>
               </table>
