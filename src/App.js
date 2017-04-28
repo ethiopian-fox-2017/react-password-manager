@@ -8,6 +8,7 @@ import {
 import logo from './logo.svg';
 import './App.css';
 import FormLogin from './components/FormLogin';
+import List from './components/List';
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
           </nav>
           <br />
           <Route exact path="/" component={FormLogin} />
+          <Route path="/list" component={List} />
         </div>
       </Router>
     );
