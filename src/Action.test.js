@@ -15,7 +15,7 @@ import {
 describe('Action test', () => {
 
   it('Should add 1 data', () => {
-    const payload = { id: 4, username: 'testing', password: 'testing', url: 'http://www.url.com', createdAt: new Date() }
+    const payload = { id: 4, username: 'testing', password: 'testing', url: 'http://www.url.com', createdAt: new Date(), updatedAt: '' }
     const expectedAction = {
       type: ADD_DATA,
       payload

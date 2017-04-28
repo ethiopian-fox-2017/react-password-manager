@@ -7,7 +7,7 @@ import {
 
 const addData = (state, payload) => {
   const newId = state[state.length-1].id + 1
-  const newData = {...payload, id: newId}
+  const newData = {...payload, id: newId, createdAt: '', updatedAt: ''}
   const newState = [...state, newData]
   return newState
 }
@@ -18,8 +18,9 @@ const deleteData = (state, id) => {
 }
 
 const editData = (state, payload) => {
+  const newData = {...payload, updatedAt: new Date()}
   const newState = state.map((each) => {
-    if(each.id === payload.id) return {...each, payload}
+    if(each.id === payload.id) return {...each, newData}
     return each
   })
   return newState
