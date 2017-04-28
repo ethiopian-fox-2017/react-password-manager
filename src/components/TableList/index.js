@@ -17,8 +17,9 @@ const styles = {
 }
 
 class passManagerList extends React.Component {
-  componentDidMount() {
-    this.props.fetchDatas()
+
+  componentWillMount() {
+    this.props.coba()
   }
 
   render() {
@@ -50,7 +51,7 @@ class passManagerList extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchDatas: () => {
+  coba: () => {
     dispatch(fetchDatas())
   }
 })

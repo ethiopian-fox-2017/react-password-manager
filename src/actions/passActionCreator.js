@@ -1,8 +1,3 @@
-export const getDatas = datas => ({
-  type: 'GET_DATAS',
-  datas: datas
-})
-
 export const fetchDatas = () => dispatch => {
   let url = 'http://localhost:4000/datas'
   fetch(url)
@@ -11,4 +6,24 @@ export const fetchDatas = () => dispatch => {
       dispatch(getDatas(datas))
     })
     .catch(err => { console.log(err.message )})
+}
+
+export const getDatas = datas => ({
+  type: 'GET_DATAS',
+  datas: datas,
+})
+
+export const addData = data => dispatch => {
+  let url = 'http://localhost:4000/datas'
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  })
+  .then((response) => {
+    dispatch({
+      type: 'ADD_DATA',
+      payload: data,
+    })
+  })
+  .catch(err => { console.log(err.message)})
 }
