@@ -1,29 +1,21 @@
-import jsf from 'json-schema-faker'
 
-const schema = {
-  type: 'array',
-  minItems: 5,
-  maxItems: 5,
-  items: {
-    user: {
-      type: 'object',
-      properties: {
-        id: {
-          type: 'number'
-        },
-        username: {
-          type: 'string'
-        },
-        password: {
-          type: 'string',
-          minLength: 5,
-          maxLength: 8
-        },
-        url: {
-
-        }
-      },
-      required: ['id','username','password','url']
-    }
-  }
+module.exports = () => {
+  const data = { users: [] }
+  data.users.push({
+    id: 1,
+    username: 'usertest',
+    password: 'asQW1@',
+    url: 'http://www.google.com',
+    createdAt: new Date(),
+    updatedAt: ''
+  })
+  data.users.push({
+    id: 2,
+    username: 'userdum',
+    password: 'ewQS!2',
+    url: 'http://www.facebook.com',
+    createdAt: new Date(),
+    updatedAt: ''
+  })
+  return data
 }

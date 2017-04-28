@@ -11,10 +11,10 @@ class App extends Component {
         <div className="App">
           <nav className="nav pw-manager">
             <div className="nav-left">
-              <p className="title is-4" nav-item><Link to="/">Password Manager</Link></p>
+              <p className="title is-4 nav-item"><Link to="/">Password Manager</Link></p>
             </div>
             <div className="nav-right">
-              <p className="title is-4" nav-item><Link to="/add">Add data</Link></p>
+              <p className="title is-4 nav-item"><Link to="/add">Add data</Link></p>
             </div>
           </nav>
 
