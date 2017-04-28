@@ -1,0 +1,20 @@
+{
+  "datas": [
+    {
+      "id": 1,
+      "url": "http://facebook.com",
+      "username": "danielags",
+      "password": "lupapass",
+      "createdAt": "",
+      "updatedAt": ""
+    },
+    {
+      "id": 2,
+      "url": "http://twitter.com",
+      "username": "permadi",
+      "password": "lupapass11",
+      "createdAt": "",
+      "updatedAt": ""
+    }
+  ]
+}
