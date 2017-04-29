@@ -16,6 +16,13 @@ export const addDataSuccess = (data) => {
   }
 }
 
+export const deleteDataSuccess = (deletedId) => {
+  return {
+    type: ActionTypes.DELETE_DATA_SUCCESS,
+    payload: deletedId
+  }
+}
+
 export const fetchData = () => {
   return (dispatch) => {
     axios.get(`${ActionTypes.SERVER_URL}/passwordsave`)
@@ -30,6 +37,14 @@ export const addData = (data) => {
   return (dispatch) => {
     axios.post(`${ActionTypes.SERVER_URL}/passwordsave`, data)
     .then(res => dispatch(addDataSuccess(res.data)))
+    .catch(err => console.error(err))
+  }
+}
+
+export const deleteData = (deletedId) => {
+  return (dispatch) => {
+    axios.delete(`${ActionTypes.SERVER_URL}/passwordsave/${deletedId}`)
+    .then(res => dispatch(deleteDataSuccess(deletedId)))
     .catch(err => console.error(err))
   }
 }

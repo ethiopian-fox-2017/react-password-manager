@@ -41,7 +41,10 @@ class PasswordForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
+    const ids = this.props.list.map(item => item.id);
+    const newId = Math.max(...ids) + 1;
     this.props.addData({
+      id: newId,
       url: this.state.url,
       username: this.state.username,
       password: this.state.password
@@ -65,15 +68,15 @@ class PasswordForm extends React.Component {
           <tbody>
             <tr>
               <td>URL </td>
-              <td><input name="url" onChange={this.handleChange.bind(this)} style={styles.input} type="text" /></td>
+              <td><input name="url" onChange={this.handleChange.bind(this)} value={this.state.url} style={styles.input} type="text" /></td>
             </tr>
             <tr>
               <td>Username </td>
-              <td><input name="username" onChange={this.handleChange.bind(this)} style={styles.input} type="text" /></td>
+              <td><input name="username" onChange={this.handleChange.bind(this)} value={this.state.username} style={styles.input} type="text" /></td>
             </tr>
             <tr>
               <td>Password </td>
-              <td><input name="password" onChange={this.handleChange.bind(this)} style={styles.input} type="password" /></td>
+              <td><input name="password" onChange={this.handleChange.bind(this)} value={this.state.password} style={styles.input} type="password" /></td>
             </tr>
             <tr>
               <td />
@@ -90,10 +93,16 @@ class PasswordForm extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    list: state.passwordData
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     addData: (data) => dispatch(addData(data))
   }
 }
 
-export default connect(null, mapDispatchToProps)(PasswordForm);
+export default connect(mapStateToProps, mapDispatchToProps)(PasswordForm);

@@ -1,7 +1,10 @@
-import { fetchData, addData } from './passwordAction';
+import { fetchData, addData, deleteData } from './passwordAction';
+import { setSearchKeyword } from './searchAction';
 
 
 export {
   fetchData,
-  addData
+  addData,
+  setSearchKeyword,
+  deleteData
 }

@@ -1,14 +1,6 @@
 {
   "passwordsave": [
     {
-      "id": 1,
-      "url": "http://hacktiv8.com/",
-      "username": "john",
-      "password": "Doe90)",
-      "createdAt": "2017-03-02",
-      "updatedAt": "2017-03-02"
-    },
-    {
       "id": 2,
       "url": "http://google.com/",
       "username": "jono",
@@ -31,14 +23,6 @@
       "createdAt": "2017-04-28T11:30:29.573Z",
       "updatedAt": "2017-04-28T11:30:29.573Z",
       "id": 4
-    },
-    {
-      "url": "tes2.com",
-      "username": "tes2",
-      "password": "abcde2",
-      "createdAt": "2017-04-28T11:32:28.158Z",
-      "updatedAt": "2017-04-28T11:32:28.158Z",
-      "id": 5
     }
   ]
 }

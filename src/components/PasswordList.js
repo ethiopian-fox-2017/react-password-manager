@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchData } from '../actions';
+import { filterList } from '../selectors';
+import DeleteButton from './DeleteButton';
 
 const styles = {
   tableList: {
@@ -32,6 +34,7 @@ class PasswordList extends React.Component {
               <th style={styles.tableTd}>Password</th>
               <th style={styles.tableTd}>CreatedAt</th>
               <th style={styles.tableTd}>UpdatedAt</th>
+              <th style={styles.tableTd}>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +46,7 @@ class PasswordList extends React.Component {
                   <td style={styles.tableTd}>{data.password}</td >
                   <td style={styles.tableTd}>{data.createdAt}</td >
                   <td style={styles.tableTd}>{data.updatedAt}</td>
+                  <td style={styles.tableTd}><DeleteButton deletedId={data.id} /></td>
                 </tr>
               )
               }
@@ -61,13 +65,14 @@ class PasswordList extends React.Component {
 const mapStateToProps = (state) => {
   // console.log('----jiojioj----',state.passwordData);
   return {
-    saveData: state.passwordData
+    saveData: filterList(state.passwordData, state.searchKeyword),
+    searchKeyword: state.searchKeyword
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData: () => dispatch(fetchData())
+    fetchData: () => dispatch(fetchData()),
   }
 }
 
