@@ -3,13 +3,19 @@ import { connect } from 'react-redux'
 
 import { fetchPasswords, deletePassword, editPassword } from '../actions/passwordAction'
 
-import Paper from 'material-ui/Paper'
-import Dialog from 'material-ui/Dialog'
-import FlatButton from 'material-ui/FlatButton'
-import IconButton from 'material-ui/IconButton'
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
+import {
+  Dialog,
+  FlatButton,
+  IconButton,
+  Paper,
+  RaisedButton,
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+  TextField } from '../MaterialUi'
 
 const styles = {
   PaperTable: {
@@ -26,6 +32,8 @@ class EditDialog extends React.Component {
       url: '',
       username: '',
       password: '',
+      createdAt: null,
+      updatedAt: null,
     }
   }
 
@@ -43,6 +51,14 @@ class EditDialog extends React.Component {
     let newState = {}
     newState[e.target.name] = e.target.value
     this.setState(newState)
+  }
+
+  onUpdate() {
+    let form = this.state
+    let updatedAt = new Date()
+    let state = {...form, updatedAt}
+    this.props.editPassword(state)
+    this.props.onRequestClose()
   }
 
   render() {
@@ -92,10 +108,7 @@ class EditDialog extends React.Component {
           </div>
           <RaisedButton
             label="Update"
-            onTouchTap={() => {
-              this.props.editPassword(this.state)
-              this.props.onRequestClose()
-            }}
+            onTouchTap={() => this.onUpdate()}
           />
           <RaisedButton
             label="Cancel"
@@ -183,6 +196,8 @@ class PasswordList extends React.Component {
           <TableRowColumn>{password.url}</TableRowColumn>
           <TableRowColumn>{password.username}</TableRowColumn>
           <TableRowColumn>{password.password}</TableRowColumn>
+          <TableRowColumn>{password.createdAt}</TableRowColumn>
+          <TableRowColumn>{password.updatedAt}</TableRowColumn>
           <TableRowColumn>
 
           <IconButton
@@ -243,7 +258,6 @@ class PasswordList extends React.Component {
 
         <Table
           selectable={false}
-          style={styles.Table}
         >
           <TableHeader
             displaySelectAll={false}
@@ -254,6 +268,8 @@ class PasswordList extends React.Component {
               <TableHeaderColumn>Url</TableHeaderColumn>
               <TableHeaderColumn>Username</TableHeaderColumn>
               <TableHeaderColumn>Password</TableHeaderColumn>
+              <TableHeaderColumn>Created At</TableHeaderColumn>
+              <TableHeaderColumn>Updated At</TableHeaderColumn>
               <TableHeaderColumn>Action</TableHeaderColumn>
             </TableRow>
           </TableHeader>

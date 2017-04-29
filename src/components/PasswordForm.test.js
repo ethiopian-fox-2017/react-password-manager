@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PasswordForm from './PasswordForm'
+import { PasswordForm } from './PasswordForm'
 import { shallow } from 'enzyme'
 
 describe('<PasswordForm />', () => {
@@ -22,9 +22,14 @@ describe('<PasswordForm />', () => {
   })
 
   test(`should start with empty text`, () => {
-    expect(wrapper.state('url')).toEqual('')
-    expect(wrapper.state('username')).toEqual('')
-    expect(wrapper.state('password')).toEqual('')
+    let form = wrapper.state().form
+    expect(form).toEqual({
+      url: '',
+      username: '',
+      password: '',
+      createdAt: null,
+      updatedAt: null
+    })
   })
 
   test(`should state changed when input has been changed`, () => {
@@ -35,7 +40,36 @@ describe('<PasswordForm />', () => {
       }
     }
     wrapper.instance().handleChange(e)
-    expect(wrapper.state('url')).toEqual('http://localhost:3000')
+    let form = wrapper.state().form
+    expect(form.url).toEqual('http://localhost:3000')
+
+    e = {
+      target: {
+        name: 'username',
+        value: 'tngmichael'
+      }
+    }
+    wrapper.instance().handleChange(e)
+    form = wrapper.state().form
+    expect(form.username).toEqual('tngmichael')
+
+    e = {
+      target: {
+        name: 'password',
+        value: '1234'
+      }
+    }
+    wrapper.instance().handleChange(e)
+    form = wrapper.state().form
+    expect(form.password).toEqual('1234')
+
+    expect(form).toEqual({
+      url: 'http://localhost:3000',
+      username: 'tngmichael',
+      password: '1234',
+      createdAt: null,
+      updatedAt: null
+    })
   })
 
 })

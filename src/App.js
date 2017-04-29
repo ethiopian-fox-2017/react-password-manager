@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css'
 
 import PasswordForm from './components/PasswordForm'
 import PasswordList from './components/PasswordList'
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import injectTapEventPlugin from 'react-tap-event-plugin'
+import {
+  MuiThemeProvider,
+  injectTapEventPlugin,
+  AppBar,
+  Drawer,
+  MenuItem } from './MaterialUi'
 
 injectTapEventPlugin()
-
-import AppBar from 'material-ui/AppBar'
-import MenuItem from 'material-ui/MenuItem'
-import Drawer from 'material-ui/Drawer'
 
 import {
   cyan800,
@@ -40,7 +39,7 @@ class App extends Component {
     this.setState({open: !this.state.open})
   }
 
-  handleCloseAndSwitch = (event, index) => {
+  handleCloseAndSwitch = (e, index) => {
     this.setState({
       open: false,
       current: index

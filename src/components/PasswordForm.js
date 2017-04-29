@@ -3,9 +3,7 @@ import { connect } from 'react-redux'
 
 import { addPassword } from '../actions/passwordAction'
 
-import Paper from 'material-ui/Paper'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
+import { Paper, RaisedButton, Snackbar, TextField } from '../MaterialUi'
 
 const styles = {
   Form: {
@@ -16,19 +14,50 @@ const styles = {
   }
 }
 
-class PasswordForm extends React.Component {
+export class PasswordForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      url: '',
-      username: '',
-      password: '',
+      form: {
+        url: '',
+        username: '',
+        password: '',
+        createdAt: null,
+        updatedAt: null,
+      },
+      open: false,
     }
   }
 
   handleChange(e) {
-    let newState = {}
-    newState[e.target.name] = e.target.value
+    let prop = {}
+    prop[e.target.name] = e.target.value
+    let form = this.state.form
+    let newState = {form: {...form, ...prop}}
+    this.setState(newState)
+  }
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    })
+  }
+
+  onSave() {
+    let form = this.state.form
+    let createdAt = new Date()
+    let state = {...form, createdAt}
+    this.props.addPassword(state)
+    let newState = {
+      form: {
+        url: '',
+        username: '',
+        password: '',
+        createdAt: null,
+        updatedAt: null,
+      },
+      open: true,
+    }
     this.setState(newState)
   }
 
@@ -46,7 +75,7 @@ class PasswordForm extends React.Component {
               hintText="URL"
               floatingLabelText="URL"
               name="url"
-              value={this.state.url}
+              value={this.state.form.url}
               onChange={(e) => this.handleChange(e)}
             />
           </div>
@@ -56,7 +85,7 @@ class PasswordForm extends React.Component {
               hintText="Username"
               floatingLabelText="Username"
               name="username"
-              value={this.state.username}
+              value={this.state.form.username}
               onChange={(e) => this.handleChange(e)}
             />
           </div>
@@ -67,15 +96,22 @@ class PasswordForm extends React.Component {
               floatingLabelText="Password"
               name="password"
               type="password"
-              value={this.state.password}
+              value={this.state.form.password}
               onChange={(e) => this.handleChange(e)}
             />
           </div>
           <RaisedButton
             label="Save"
-            onTouchTap={() => this.props.addPassword(this.state)}
+            onTouchTap={() => this.onSave()}
           />
         </form>
+
+        <Snackbar
+          open={this.state.open}
+          message="Password added"
+          autoHideDuration={4000}
+          onRequestClose={this.handleRequestClose}
+        />
       </Paper>
     )
   }
