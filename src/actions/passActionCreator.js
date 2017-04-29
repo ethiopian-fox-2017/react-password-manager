@@ -1,23 +1,32 @@
 import axios from 'axios';
 
 export const fetchDatas = () => dispatch => {
+  console.log('test -----');
   let url = 'http://localhost:4000/datas'
+  return
   fetch(url)
-    .then(response => response.json())
+    .then(response =>
+    {
+      console.log('====----');
+      return response.json()
+    })
     .then(datas => {
-      dispatch(getDatas(datas))
+      console.log('test222 -----');
+      return dispatch(getDatas(datas))
     })
     .catch(err => { console.log(err.message )})
+
 }
 
 export const getDatas = datas => ({
   type: 'GET_DATAS',
-  datas: datas,
+  payload: datas,
 })
 
 export const fetchAddData = newData => dispatch => {
   let url = 'http://localhost:4000/datas'
   const newDataToDate = {...newData, createdAt: new Date(), updatedAt: ''}
+  console.log("=======",newData);
   axios.post(url, newDataToDate)
     .then(res => dispatch(addData(res.data)));
 }

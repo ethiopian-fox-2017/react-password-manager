@@ -56,9 +56,13 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-const mapStateToProps = state => {
-  console.log("-------++ ", state.datas);
-  return { datas: state.datas }
-}
+const mapStateToProps = state => (
+  { datas: state.datas }
+)
+
+// const mapStateToProps = state => {
+//   console.log("-------++ ", state.datas);
+//   return { datas: state.datas }
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(passManagerList)

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addData } from '../actions';
+import { fetchAddData } from '../actions';
 
 const styles = {
   formAdd: {
@@ -31,7 +31,14 @@ export class FormCreate extends React.Component {
   render() {
     return (
       <div className="formAdd">
-        <form style={styles.formAdd}>
+        <form
+          style={styles.formAdd}
+          onSubmit={(e) => {
+            e.preventDefault()
+            this.props.addData(this.state);
+            this.setState({url: '', username:'', password:''})
+          }}
+          >
           URL:<br/>
           <input
             type="text"
@@ -69,7 +76,7 @@ export class FormCreate extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addData: (data) => dispatch(addData(data))
+    addData: (newData) => dispatch(fetchAddData(newData))
   }
 }
 
