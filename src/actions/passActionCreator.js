@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const fetchDatas = () => dispatch => {
   let url = 'http://localhost:4000/datas'
   fetch(url)
@@ -13,17 +15,14 @@ export const getDatas = datas => ({
   datas: datas,
 })
 
-export const addData = data => dispatch => {
+export const fetchAddData = newData => dispatch => {
   let url = 'http://localhost:4000/datas'
-  fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(data),
-  })
-  .then((response) => {
-    dispatch({
-      type: 'ADD_DATA',
-      payload: data,
-    })
-  })
-  .catch(err => { console.log(err.message)})
+  const newDataToDate = {...newData, createdAt: new Date(), updatedAt: ''}
+  axios.post(url, newDataToDate)
+    .then(res => dispatch(addData(res.data)));
 }
+
+export const addData = newData => ({
+  type: 'ADD_DATA',
+  payload: newData
+})

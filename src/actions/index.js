@@ -1,3 +1,3 @@
-import { getDatas, fetchDatas, addData } from './passActionCreator';
+import { getDatas, fetchDatas } from './passActionCreator';
 
-export { getDatas, fetchDatas, addData }
+export { getDatas, fetchDatas}
