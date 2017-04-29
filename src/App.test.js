@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route } from 'react-router';
+import { Route } from 'react-router-dom';
 import { shallow, mount } from 'enzyme';
 import App from './App';
 import FormLogin from './components/FormLogin';
-import Form from './components/FormLogin/Form';
+import { Form } from './components/FormLogin/Form';
 import List from './components/List';
 
 
