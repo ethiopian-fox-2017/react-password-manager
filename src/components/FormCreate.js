@@ -12,7 +12,7 @@ const styles = {
   }
 }
 
-class FormCreate extends React.Component {
+export class FormCreate extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
