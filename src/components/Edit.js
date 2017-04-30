@@ -21,7 +21,8 @@ class Edit extends React.Component {
       url: this.props.url,
       username: this.props.username,
       password: this.props.password,
-      createdAt: this.props.createdAt
+      createdAt: this.props.createdAt,
+      warning: ''
     };
   }
 
@@ -37,60 +38,83 @@ class Edit extends React.Component {
    const updateState = {};
    updateState[e.target.name] = e.target.value;
    this.setState(updateState);
- }
+  }
+
+  validatePassword(value) {
+    const regex1 = new RegExp('^(?=.*[a-z])')
+    const regex2 = new RegExp('^(?=.*[A-Z])')
+    const regex3 = new RegExp('^(?=.*[0-9])')
+    const regex4 = new RegExp('^(?=.*[!@#$%^&*])')
+    const regex5 = new RegExp('^(?=.{5,})');
+
+    if(!regex1.test(value)){
+      this.setState({warning: 'Password at least must have 1 lowercase character'})
+    } else if(!regex2.test(value)) {
+      this.setState({warning: 'Password at least must have 1 uppercase character'})
+    } else if(!regex3.test(value)) {
+      this.setState({warning: 'Password at least must have 1 number character'})
+    } else if(!regex4.test(value)) {
+      this.setState({warning: 'Password at least must have 1 special character'})
+    } else if(!regex5.test(value)) {
+      this.setState({warning: 'Password length at least 5 characters'})
+    } else {
+      this.setState({warning: ''})
+      this.handleClose()
+      return true
+    }
+  }
 
   render() {
     const actions = [
       <FlatButton
-        label="Cancel"
+        label='Cancel'
         primary={true}
         onTouchTap={this.handleClose}
       />,
       <FlatButton
-        label="SAVE CHANGES"
+        label='SAVE CHANGES'
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.handleClose}
         onClick={() => {
-          this.props.editData(this.state);
-          this.setState({ title: this.state.title });
+          this.validatePassword(this.state.password) && this.props.editData(this.state)
         }}
       />,
     ];
 
     return (
       <div>
-        <button onTouchTap={this.handleOpen} style={{backgroundColor:"orange", padding:"10px", borderRadius:"15px", color:"white", outline:"none"}}>
+        <button onTouchTap={this.handleOpen} style={{backgroundColor:'orange', padding:'10px', borderRadius:'15px', color:'white', outline:'none'}}>
           EDIT
         </button>
         <Dialog
-          title="Edit this Data"
+          title='Edit this Data'
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
           <TextField
-            hintText="Input Your Edited URL Here..."
-            floatingLabelText="Edit URL"
-            name="url"
+            hintText='Input Your Edited URL Here...'
+            floatingLabelText='Edit URL'
+            name='url'
             value={this.state.url}
             onChange={this.handleChange.bind(this)}
           /><br/>
           <TextField
-            hintText="Input Your Edited Username Here..."
-            floatingLabelText="Edit Username"
-            name="username"
+            hintText='Input Your Edited Username Here...'
+            floatingLabelText='Edit Username'
+            name='username'
             value={this.state.username}
             onChange={this.handleChange.bind(this)}
           /><br />
           <TextField
-            hintText="Input Your Edited Password Here..."
-            floatingLabelText="Edit Password"
-            name="password"
+            hintText='Input Your Edited Password Here...'
+            floatingLabelText='Edit Password'
+            name='password'
             value={this.state.password}
             onChange={this.handleChange.bind(this)}
           />
+          <p style={{color:'red'}}>{this.state.warning}</p>
         </Dialog>
       </div>
     );

@@ -8,9 +8,9 @@ import { filterData } from '../selectors';
 import Edit from './Edit';
 
 class PasswordList extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   componentDidMount () {
     this.props.fetchData()
@@ -27,7 +27,7 @@ class PasswordList extends React.Component {
     return (
       <div>
         <center>
-            <table style={{width:"80%"}} className="bordered-table">
+            <table style={{width:'80%'}} className='bordered-table'>
               <thead>
                 <tr>
                   <th>URL</th>
@@ -49,8 +49,8 @@ class PasswordList extends React.Component {
                     <td>{data.updatedAt}</td>
                     <td><button
                           onClick={() => this.confirmDelete(data.id)}
-                          style={{backgroundColor:"red", padding:"11px", borderRadius:"15px", color:"white", outline:"none"}}
-                        >DEL</button></td>
+                          style={{backgroundColor:'red', padding:'10px', borderRadius:'15px', color:'white', outline:'none'}}
+                        >DELETE</button></td>
                     <td>
                     <Edit id={data.id} url={data.url} username={data.username} password={data.password} createdAt={data.createdAt}/>
                     </td>
@@ -59,7 +59,7 @@ class PasswordList extends React.Component {
               </tbody>
             </table>
         </center>
-        {this.props.passwords.length === 0 && <h1 style={{color:"red"}}>Data Not Found</h1>}
+        {this.props.passwords.length === 0 && <h1 style={{color:'red'}}>Data Not Found</h1>}
       </div>
     )
   }
