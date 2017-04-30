@@ -21,27 +21,24 @@ it('renders without crashing', () => {
 });
 
 describe('pure render testing', () => {
-  it('should render DUmmy Component', () => {
-    const wrapper = shallow(
-      <App />);
-      expect(wrapper.containsMatchingElement(<DummyComponent />)).toBe(true);
-    // expect(wrapper.containsAllMatchingElements([<PasswordSearchList />])).toBe(true)
+  it('should render PasswordSearchList Component', () => {
+    const wrapper = shallow(<App />);
+      // expect(wrapper.containsMatchingElement(<DummyComponent />)).toBe(true);
+    expect(wrapper.containsAllMatchingElements([<PasswordSearchList />])).toBe(true)
   })
 })
 
 describe('with redux render testing', () => {
   it('should render All inside App', () => {
-    const wrapper = shallow(
-      <App />);
+    const wrapper = shallow(<App />);
       expect(wrapper.containsAllMatchingElements([
         <div>
           <img />
-          <h2>Welcome to React</h2>
+          <h2>Password Manager</h2>
         </div>,
         <PasswordForm />,
         <br />,
         <PasswordSearchList />,
-        <DummyComponent />,
       ])).toBe(true);
   })
 })
