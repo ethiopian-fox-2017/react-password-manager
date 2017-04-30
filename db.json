@@ -45,6 +45,14 @@
       "password": "gtg",
       "createdAt": "2017-04-29T04:28:19.290Z",
       "updatedAt": "2017-04-29T08:06:13.747Z"
+    },
+    {
+      "url": "ada",
+      "username": "ada",
+      "password": "1Aa$hh",
+      "createdAt": "2017-04-30T09:58:39.907Z",
+      "updatedAt": null,
+      "id": 9
     }
   ]
 }

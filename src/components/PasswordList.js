@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchPasswords, deletePassword, editPassword } from '../actions/passwordAction'
 import { searchKeywords } from '../actions/searchAction'
 import { filterUrlsByKeywords } from '../selectors/passwordList'
+import PasswordChecker from './PasswordChecker'
 
 import {
   Dialog,
@@ -111,6 +112,12 @@ class EditDialog extends React.Component {
               onChange={(e) => this.handleChange(e)}
             />
           </div>
+
+          <PasswordChecker
+            ref={comp => { this.passwordChecker = comp }}
+            password={this.state.password}
+          />
+
           <RaisedButton
             label="Update"
             onTouchTap={() => this.onUpdate()}
