@@ -1,7 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {
+  FontIcon,
+  List,
+  ListItem, } from 'material-ui'
 
 import { fetchAddData } from '../actions';
+import ValidationPass from './ValidationPass';
+
 
 const styles = {
   formAdd: {
@@ -9,6 +15,9 @@ const styles = {
     margin: '0 auto',
     padding: '10px',
     fontSize: '18px',
+  },
+  validation: {
+    width: '200px',
   }
 }
 
@@ -20,6 +29,7 @@ export class FormCreate extends React.Component {
       username: '',
       password: '',
     }
+
   }
 
   handleChange(e) {
@@ -35,8 +45,13 @@ export class FormCreate extends React.Component {
           style={styles.formAdd}
           onSubmit={(e) => {
             e.preventDefault()
-            this.props.addData(this.state);
+            if (this.ValidationPass.afterValidate()) {
+              this.props.addData(this.state);
+            } else {
+              alert('Password not yet completed !')
+            }
             this.setState({url: '', username:'', password:''})
+            console.log()
           }}
           >
           URL:<br/>
@@ -69,6 +84,11 @@ export class FormCreate extends React.Component {
             type="submit"
           />
         </form>
+        <ValidationPass
+          pass={this.state.password}
+          ref={(fromChild) => this.ValidationPass = fromChild}
+          style={styles.validation}
+        />
       </div>
     )
   }
