@@ -3,10 +3,14 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import AppBar from 'material-ui/AppBar'
 import AutoComplete from 'material-ui/AutoComplete'
+import Avatar from 'material-ui/Avatar'
 import Dialog from 'material-ui/Dialog'
+import Divider from 'material-ui/Divider'
 import Drawer from 'material-ui/Drawer'
 import FlatButton from 'material-ui/FlatButton'
+import FontIcon from 'material-ui/FontIcon'
 import IconButton from 'material-ui/IconButton'
+import {List, ListItem} from 'material-ui/List'
 import MenuItem from 'material-ui/MenuItem'
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -25,10 +29,15 @@ export {
   injectTapEventPlugin,
   AppBar,
   AutoComplete,
+  Avatar,
   Dialog,
+  Divider,
   Drawer,
   FlatButton,
+  FontIcon,
   IconButton,
+  List,
+  ListItem,
   MenuItem,
   Paper,
   RaisedButton,

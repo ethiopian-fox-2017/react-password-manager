@@ -2,9 +2,9 @@ import { createStore, applyMiddleware } from 'redux'
 // import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
-import passwordReducer from '../reducers/passwordReducer'
+import rootReducer from '../reducers'
 
 const middlewares = applyMiddleware(thunk)
-const store = createStore(passwordReducer, middlewares)
+const store = createStore(rootReducer, middlewares)
 
 export default store

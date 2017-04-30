@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { fetchPasswords, deletePassword, editPassword } from '../actions/passwordAction'
+import { searchKeywords } from '../actions/searchAction'
+import { filterUrlsByKeywords } from '../selectors/passwordList'
 
 import {
   Dialog,
@@ -22,6 +24,9 @@ const styles = {
     margin: 20,
     marginTop: 86,
   },
+  SearchKeywords: {
+    marginLeft: 20
+  }
 }
 
 class EditDialog extends React.Component {
@@ -122,7 +127,7 @@ class EditDialog extends React.Component {
   }
 }
 
-class PasswordList extends React.Component {
+export class PasswordList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -134,7 +139,7 @@ class PasswordList extends React.Component {
         url: '',
         username: '',
         password: '',
-      }
+      },
     }
     this.getData = this.getData.bind(this)
   }
@@ -256,6 +261,17 @@ class PasswordList extends React.Component {
           Delete password?
         </Dialog>
 
+
+        <div>
+          <TextField
+            hintText="Search Urls"
+            floatingLabelText="Search Urls"
+            name="searchKeywords"
+            onChange={(e) => this.props.searchKeywords(e.target.value)}
+            style={styles.SearchKeywords}
+          />
+        </div>
+
         <Table
           selectable={false}
         >
@@ -282,13 +298,14 @@ class PasswordList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  passwords: state
+  passwords: filterUrlsByKeywords(state.passwords, state.search)
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchPasswords: () => dispatch(fetchPasswords()),
   deletePassword: id => dispatch(deletePassword(id)),
-  editPassword: password => dispatch(editPassword(password))
+  editPassword: password => dispatch(editPassword(password)),
+  searchKeywords: keywords => dispatch(searchKeywords(keywords))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PasswordList)

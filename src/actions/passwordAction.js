@@ -1,10 +1,6 @@
 import axios from 'axios'
 
 export const fetchPasswords = () => {
-  function test() {
-    return true
-  }
-
   return dispatch =>
     axios.get(`http://localhost:4000/passwords`)
       .then(res => {
