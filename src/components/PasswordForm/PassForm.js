@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import { addPassword } from '../actions';
+import { addRequest } from '../../actions';
 
 const styles = {
   button: {
@@ -23,8 +23,10 @@ class PassForm extends React.Component {
         url: '',
         username: '',
         password: '',
-        submitted: false,
+        createdAt: '',
+        updatedAt: '',
       },
+      submitted: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -32,12 +34,12 @@ class PassForm extends React.Component {
   handleChange(e) {
     const submittedPassword = {};
     submittedPassword[e.target.name] = e.target.value;
-    const newPassword = Object.assign({}, this.state.form, submittedPassword )
+    const newPassword = Object.assign({}, this.state.form, submittedPassword);
     this.setState({ form: newPassword });
   }
 
   render() {
-    const { newPass } = this.props;
+    const { addRequest } = this.props;
     const { url, username, password } = this.state.form;
     return (
       <div>
@@ -45,7 +47,9 @@ class PassForm extends React.Component {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            newPass(this.state);
+            addRequest(
+              { url, username, password, createdAt: Date.now(), updatedAt: Date.now() }
+            );
             this.setState(
               { url: '', username: '', password: '', submitted: true },
             );
@@ -81,7 +85,7 @@ class PassForm extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  newPass: newPass => dispatch(addPassword(newPass))
+  addRequest: newPass => dispatch(addRequest(newPass))
 });
 
 export default connect(null, mapDispatchToProps)(PassForm);

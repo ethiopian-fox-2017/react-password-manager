@@ -1,15 +1,6 @@
-import { ADD_PASSWORD, REMOVE_PASSWORD, EDIT_PASSWORD } from '../actions/constants';
+import { ADD_PASSWORD, REMOVE_PASSWORD, EDIT_PASSWORD, GET_PASSWORD } from '../actions/constants';
 
-const initialState = [
-  {
-    id: 1,
-    url: 'http://google.com/',
-    username: 'John Google',
-    password: 'google',
-    createdAt: '4 Februari 2017',
-    updatedAt: '17 April 2017',
-  },
-];
+const initialState = [];
 
 const addPassword = (state, newPass) => {
   const { url, username, password } = newPass.form;
@@ -58,6 +49,7 @@ const passReducer = (state = initialState, action) => {
     case ADD_PASSWORD: return addPassword(state, action.payload);
     case REMOVE_PASSWORD: return removePassword(state, action.payload);
     case EDIT_PASSWORD: return editPassword(state, action.payload);
+    case GET_PASSWORD: return action.payload;
     default: return state;
   }
 };

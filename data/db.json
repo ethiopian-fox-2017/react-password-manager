@@ -1,0 +1,28 @@
+{
+  "passwords": [
+    {
+      "id": 1,
+      "url": "http://google.com/",
+      "username": "John Google",
+      "password": "google",
+      "createdAt": "4 Februari 2017",
+      "updatedAt": "17 April 2017"
+    },
+    {
+      "id": 2,
+      "url": "http://google.com/",
+      "username": "John Google",
+      "password": "google",
+      "createdAt": "4 Februari 2017",
+      "updatedAt": "17 April 2017"
+    },
+    {
+      "id": 3,
+      "url": "sadsadtest",
+      "username": "asdasdasdasdasdasdsadsa",
+      "password": "asdasssadads",
+      "createdAt": 1493630481124,
+      "updatedAt": 1493630481124
+    }
+  ]
+}

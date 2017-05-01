@@ -4,8 +4,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Header from './components/Header';
-import PassList from './components/PassList';
-import PassForm from './components/PassForm';
+import PassList from './components/PasswordList/PassList';
+import PassForm from './components/PasswordForm/PassForm';
 
 injectTapEventPlugin();
 

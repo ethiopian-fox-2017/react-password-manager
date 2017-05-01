@@ -2,11 +2,9 @@ import React from 'react';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
-import { fullWhite } from 'material-ui/styles/colors';
-import ActionAndroid from 'material-ui/svg-icons/action/android';
 
-import { removePassword } from '../actions';
-import PassEdit from './PassEdit';
+import { removeRequest } from '../../actions';
+import PassEdit from '../PasswordForm/PassEdit';
 
 const style = {
   margin: 12,
@@ -25,7 +23,7 @@ const PassItem = props => (
     <TableRowColumn>
       <RaisedButton
         backgroundColor="#a4c639"
-        icon={<ActionAndroid color={fullWhite} />}
+        label="Delete"
         style={style}
         onClick={() => props.deletePassword(props.id)}
       />
@@ -34,7 +32,7 @@ const PassItem = props => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  deletePassword: passId => dispatch(removePassword(passId)),
+  deletePassword: passId => dispatch(removeRequest(passId)),
 });
 
 export default connect(null, mapDispatchToProps)(PassItem);

@@ -2,3 +2,5 @@ export const ADD_PASSWORD = 'ADD_PASSWORD';
 export const GET_PASSWORD = 'GET_PASSWORD';
 export const EDIT_PASSWORD = 'EDIT_PASSWORD';
 export const REMOVE_PASSWORD = 'REMOVE_PASSWORD';
+
+export const SEARCH_KEYWORD = 'SEARCH_KEYWORD';

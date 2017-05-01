@@ -1,11 +1,16 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
+import SearchBox from './SearchBox';
 
 const Header = () => (
-  <AppBar
-    title="Title"
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
-  />
+  <div>
+    <AppBar
+      title="Title"
+      iconClassNameRight="muidocs-icon-navigation-expand-more"
+    >
+      <SearchBox />
+    </AppBar>
+  </div>
 );
 
 export default Header;

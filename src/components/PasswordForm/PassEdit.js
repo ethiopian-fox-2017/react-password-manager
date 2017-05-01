@@ -5,7 +5,7 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
-import { editPassword } from '../actions';
+import { editRequest } from '../../actions';
 
 class PassEdit extends React.Component {
   constructor(props) {
@@ -16,6 +16,8 @@ class PassEdit extends React.Component {
         url: '',
         username: '',
         password: '',
+        createdAt: '',
+        updatedAt: '',
       },
       open: false,
     };
@@ -43,11 +45,11 @@ class PassEdit extends React.Component {
   }
 
   render() {
-    const { url, username, password } = this.state.editForm;
-    const { updatePassword } = this.props;
+    const { id, url, username, password } = this.state.editForm;
+    const { editRequest } = this.props;
     return (
       <div>
-        <RaisedButton label="Dialog" onTouchTap={() => this.handleOpen(this.props)} />
+        <RaisedButton label="Edit" onTouchTap={() => this.handleOpen(this.props)} />
         <Dialog
           title="Edit Form"
           modal={false}
@@ -57,9 +59,11 @@ class PassEdit extends React.Component {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              updatePassword(this.state.editForm);
+              editRequest(
+                { id, url, username, password, createdAt: Date.now(), updatedAt: Date.now() }
+              );
               this.setState(
-                { url: '', username: '', password: '', submitted: true },
+                { url: '', username: '', password: '' },
               );
             }}
           >
@@ -104,7 +108,7 @@ class PassEdit extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updatePassword: updatedPass => dispatch(editPassword(updatedPass)),
+  editRequest: updatedPass => dispatch(editRequest(updatedPass)),
 });
 
 export default connect(null, mapDispatchToProps)(PassEdit);
