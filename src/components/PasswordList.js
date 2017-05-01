@@ -49,7 +49,7 @@ class PasswordList extends React.Component {
                     <td>{data.updatedAt}</td>
                     <td><button
                           onClick={() => this.confirmDelete(data.id)}
-                          style={{backgroundColor:'red', padding:'10px', borderRadius:'15px', color:'white', outline:'none'}}
+                          style={{backgroundColor:'red', padding:'10px', borderRadius:'15px', color:'white', outline:'none', cursor:'pointer'}}
                         >DELETE</button></td>
                     <td>
                     <Edit id={data.id} url={data.url} username={data.username} password={data.password} createdAt={data.createdAt}/>

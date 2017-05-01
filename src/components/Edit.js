@@ -83,7 +83,7 @@ class Edit extends React.Component {
 
     return (
       <div>
-        <button onTouchTap={this.handleOpen} style={{backgroundColor:'orange', padding:'10px', borderRadius:'15px', color:'white', outline:'none'}}>
+        <button onTouchTap={this.handleOpen} style={{backgroundColor:'orange', padding:'10px', borderRadius:'15px', color:'white', outline:'none', cursor:'pointer'}}>
           EDIT
         </button>
         <Dialog

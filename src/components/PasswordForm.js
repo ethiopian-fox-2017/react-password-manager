@@ -85,7 +85,7 @@ class PasswordForm extends React.Component {
                     <td></td>
                     <td style={{textAlign:'right'}}><button
                           type='submit'
-                          style={{backgroundColor:'green', padding:'10px', borderRadius:'15px', color:'white', width:'100px', fontSize:'15pt', outline:'none'}}
+                          style={{backgroundColor:'green', padding:'10px', borderRadius:'15px', color:'white', width:'100px', fontSize:'15pt', outline:'none', cursor:'pointer'}}
                         >ADD</button></td>
                   </tr>
                 </tbody>

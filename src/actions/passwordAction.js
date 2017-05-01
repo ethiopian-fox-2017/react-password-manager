@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { SERVER_URL, FETCH_DATA_SUCCESS, ADD_DATA_SUCCESS, DEL_DATA_SUCCESS, EDIT_DATA_SUCCESS } from './constants';
 
+//////////////// FETCH DATA ////////////////
 export const fetchDataSuccess = (data) => ({
   type: FETCH_DATA_SUCCESS,
   payload: data
@@ -13,6 +14,8 @@ export const fetchData = () => {
   }
 }
 
+
+//////////////// ADD DATA ////////////////
 export const addDataSuccess = (newData) => ({
   type: ADD_DATA_SUCCESS,
   payload: newData
@@ -26,6 +29,8 @@ export const addData = (newData) => {
   }
 }
 
+
+//////////////// DELETE DATA ////////////////
 export const delDataSuccess = (id) => ({
   type: DEL_DATA_SUCCESS,
   payload: id
@@ -38,6 +43,8 @@ export const delData = (id) => {
   }
 }
 
+
+//////////////// EDIT DATA ////////////////
 export const editDataSuccess = data => ({
   type: EDIT_DATA_SUCCESS,
   payload: data,

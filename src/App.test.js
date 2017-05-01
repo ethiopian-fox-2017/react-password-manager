@@ -7,7 +7,7 @@ import store from './store'
 import App from './App';
 import { PasswordForm, PasswordList, Search } from './components'
 
-it('renders without crashing', () => {
+it('App renders without crashing', () => {
   const div = document.createElement('div');
   const wrapper = shallow(
     <Provider store={store}>
@@ -15,23 +15,25 @@ it('renders without crashing', () => {
     </Provider>);
 });
 
-describe('with redux render testing', () => {
-  it('should render All inside App', () => {
+describe('App with redux render testing', () => {
+  it('successfully render All Matching Elements inside App', () => {
     const wrapper = shallow(
       <App />);
       expect(wrapper.containsAllMatchingElements([
-        <div>
-          <img />
-          <h2>React Password Manager</h2>
-        </div>,
-        <PasswordForm />,
-        <center>
-        <fieldset>
-          <legend>Password-List</legend>
-          <center><Search /></center>
-          <PasswordList />
-        </fieldset>
-        </center>
+          <div>
+            <div>
+              <img />
+              <h2>React-Redux Password Manager</h2>
+            </div>
+            <PasswordForm />
+            <center>
+            <fieldset>
+              <legend><b>Password-List</b></legend>
+              <center><Search /></center>
+              <PasswordList />
+            </fieldset>
+            </center>
+          </div>
       ])).toBe(true);
   })
 })
