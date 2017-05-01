@@ -5,7 +5,7 @@ import SearchBox from './SearchBox';
 const Header = () => (
   <div>
     <AppBar
-      title="Title"
+      title="Password Manager"
       iconClassNameRight="muidocs-icon-navigation-expand-more"
     >
       <SearchBox />

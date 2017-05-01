@@ -1,6 +1,6 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, browserHistory, Route } from 'react-router-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Header from './components/Header';
@@ -11,7 +11,7 @@ injectTapEventPlugin();
 
 
 const App = () => (
-  <BrowserRouter>
+  <BrowserRouter history={browserHistory}>
     <MuiThemeProvider>
       <div>
         <Header />

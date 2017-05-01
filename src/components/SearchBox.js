@@ -6,7 +6,7 @@ import { searchKeyword } from '../actions';
 const SearchBox = props => (
   <TextField
     type="text"
-    floatingLabelText="Floating Label Text"
+    floatingLabelText="Search here..."
     value={props.searchKey}
     onChange={e => props.search(e.target.value)}
   />
