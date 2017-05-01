@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { Route } from 'react-router'
 
 import App from './App'
-import { Main } from './components'
+import { Main, Add } from './components'
 
 describe('Render Test', () => {
 
@@ -24,5 +24,14 @@ describe('Render Test', () => {
       return pathMap
     }, {})
     expect(actual['/']).toBe(Main)
+  })
+
+  it('should render Add component from route "/add"', () => {
+    const actual = shallow(<App />).find(Route).reduce((pathMap, route) => {
+      const routeProps = route.props()
+      pathMap[routeProps.path] = routeProps.component
+      return pathMap
+    }, {})
+    expect(actual['/add']).toBe(Add)
   })
 })

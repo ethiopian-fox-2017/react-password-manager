@@ -14,22 +14,22 @@ describe('Reducer test', () => {
   })
 
   it('Should return new state from addData', () => {
-    const payload = {
+    const dummy = {
+      id: 2,
       username: 'testing',
       password: 'testing',
-      url: 'http://www.url.com'
+      url: 'http://www.web.com',
+      createdAt: new Date().toISOString(),
+      updatedAt: ''
     }
-    expect(dataReducer([{ id: 1, username: 'testing', password: 'testing', url: 'http://www.url.com'}], {
+    expect(dataReducer([{id:1}], {
       type: ADD_DATA,
-      payload
-    })).toEqual([
-      { id: 1, username: 'testing', password: 'testing', url: 'http://www.url.com', createdAt: '', updatedAt: '' },
-      { id: 2, username: 'testing', password: 'testing', url: 'http://www.url.com', createdAt: '', updatedAt: '' }
-    ])
+      dummy
+    })).toEqual([{id:1},dummy])
   })
 
   it('Should return new state from editData, ID = 1', () => {
-    const payload = {
+    const dummy = {
       id: 1,
       username: 'changed'
     }
@@ -42,14 +42,14 @@ describe('Reducer test', () => {
       updatedAt: ''
     }], {
       type: EDIT_DATA,
-      payload
+      dummy
     })).toEqual([{
       id: 1,
       username: 'changed',
       password: 'testing',
       url: 'http://www.url.com',
       createdAt: '01-01-2000',
-      updatedAt: ''
+      updatedAt: new Date().toISOString()
     }])
   })
 })

@@ -1,8 +1,8 @@
 import {
   fetchDataSuccess,
-  addData,
-  editData,
-  deleteData
+  addDataSuccess,
+  editDataSuccess,
+  deleteDataSuccess
 } from './actions'
 
 import {
@@ -20,7 +20,7 @@ describe('Action test', () => {
       type: ADD_DATA,
       payload
     }
-    expect(addData(payload)).toEqual(expectedAction)
+    expect(addDataSuccess(payload)).toEqual(expectedAction)
   })
 
   it('Should delete 1 data with ID = 1', () => {
@@ -29,7 +29,7 @@ describe('Action test', () => {
       type: DELETE_DATA,
       payload
     }
-    expect(deleteData(payload)).toEqual(expectedAction)
+    expect(deleteDataSuccess(payload)).toEqual(expectedAction)
   })
 
   it('Should success fetch data', () => {
@@ -46,6 +46,6 @@ describe('Action test', () => {
       type: EDIT_DATA,
       payload
     }
-    expect(editData(payload)).toEqual(expectedAction)
+    expect(editDataSuccess(payload)).toEqual(expectedAction)
   })
 })

@@ -9,11 +9,12 @@ const Main = () => (
         <thead>
           <tr>
             <th>ID</th>
-            <th><abbr title="Link to websites" />URL</th>
+            <th><abbr title="Website" />URL</th>
             <th>Username</th>
             <th>Password</th>
             <th>createdAt</th>
             <th>updatedAt</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <Passwords />
