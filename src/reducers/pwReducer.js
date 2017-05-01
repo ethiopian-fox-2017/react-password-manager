@@ -6,7 +6,12 @@ import {
 } from '../constants'
 
 const addData = (state, payload) => {
-  const newId = state[state.length-1].id + 1
+  let newId
+  if(state.length !== 0) {
+    newId = state[state.length-1].id + 1
+  } else {
+    newId = 1
+  }
   const createdAt = new Date()
   const newData = {
     id: newId,
@@ -25,12 +30,17 @@ const deleteData = (state, id) => {
   return newState
 }
 
-const editData = (state, { id, url, username, password, createdAt }) => {
+const editData = (state, payload) => {
   const updatedAt = new Date()
   const newState = state.map((each) => {
-    if(each.id === id) {
+    if(each.id === payload.id) {
       return {
-        id, url, username, password, createdAt, updatedAt: updatedAt.toISOString()
+        id: payload.id,
+        url: payload.url,
+        username: payload.username,
+        password: payload.password,
+        createdAt: payload.createdAt,
+        updatedAt: updatedAt.toISOString()
       }
     }
     return each
@@ -42,7 +52,7 @@ const dataReducer = (state = [], action) => {
   switch (action.type) {
   case FETCH_DATA_SUCCESS: return action.payload
   case ADD_DATA: return addData(state, action.payload)
-  case DELETE_DATA: return deleteData(state, action.payload)
+  case DELETE_DATA: return deleteData(state, action.id)
   case EDIT_DATA: return editData(state, action.payload)
   default: return state
   }

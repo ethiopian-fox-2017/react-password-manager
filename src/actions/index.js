@@ -44,7 +44,7 @@ export const editData = (data) => (
       updatedAt: new Date()
     }
     axios.put(`http://localhost:3000/users/${data.id}`, editedData)
-      .then(res => dispatch(editDataSuccess(res.data)))
+      .then(() => dispatch(editDataSuccess(editedData)))
   }
 )
 
@@ -52,7 +52,7 @@ export const addData = (data) => (
   (dispatch) => {
     const newData = { ...data, createdAt: new Date().toISOString(), updatedAt: '' }
     axios.post('http://localhost:3000/users', newData)
-      .then(res => dispatch(addDataSuccess(res.data)))
+      .then(() => dispatch(addDataSuccess(data)))
   }
 )
 
