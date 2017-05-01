@@ -5,7 +5,8 @@ import AddPassword from './components/addPassword';
 import ViewPassword from './components/viewPassword';
 import Header from './components/header';
 import Errorview from './components/error';
-class App extends Component {
+
+export class App extends Component {
   render() {
     return (
       <BrowserRouter>

@@ -4,7 +4,7 @@ import { Button } from 'semantic-ui-react';
 import DeletePassword from './deletePassword'
 import EditPassword from './editPassword'
 
-const ContentPassword = (props) =>(
+export const ContentPassword = (props) =>(
   <Table.Row>
     <Table.Cell width={1}>{props.password.id}</Table.Cell>
     <Table.Cell width={3}>{props.password.url}</Table.Cell>

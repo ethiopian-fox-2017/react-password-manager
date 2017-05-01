@@ -4,7 +4,7 @@ import { Input } from 'semantic-ui-react';
 
 import {searchPassword} from '../actions';
 
-const SearchBox = (props) => (
+export const SearchBox = (props) => (
   <div>
   <Input fluid focus onChange={(e)=> props.searchPassword(e.target.value)} placeholder='Search...' />
   </div>

@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Button, Modal, Form } from 'semantic-ui-react';
 
 import { editPassword } from '../../actions'
+import CheckPassword from '../addPassword/checkPassword'
 
-class EditPassword extends Component {
+export class EditPassword extends Component {
   constructor(props){
     super(props);
     this.state={
@@ -63,8 +64,7 @@ class EditPassword extends Component {
                  <input name='password' placeholder='password' value={this.state.password.password} onChange={(e)=>this.handleChange(e.target)}/>
                </Form.Field>
              </Form>
-             <p>({/[A-Z]/.test(this.state.password.password) ? "V" :" " })Password harus mengandung huruf besar</p>
-             <p>({/[0-9]/.test(this.state.password.password) ? "V" :" " })Password harus mengandung angka</p>
+             <CheckPassword password={this.state.password.password} />
             </Modal.Content>
             <Modal.Actions>
               <Button negative onClick={() => this.closeModal()}>

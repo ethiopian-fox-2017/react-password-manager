@@ -1,5 +1,6 @@
 import { FETCH_PASSWORD,ADD_PASSWORD,DELETE_PASSWORD,EDIT_PASSWORD } from '../actions/constants';
 const initialState =[];
+import axios from 'axios';
 
 const fetchDataProcess = (payloads) => {
   const password = payloads.map((payload) => {
@@ -20,11 +21,32 @@ const addPassword = (state,payload) =>{
   let id = Math.max(...ids)+1
   let newpassword={...payload, id:id};
   let newstate =[...state,newpassword];
+  axios.post('http://localhost:3004/passManager', {
+    url:newpassword.url,
+    username:newpassword.username,
+    password:newpassword.password,
+    createdAt:newpassword.createdAt,
+    updatedAt:newpassword.updatedAt
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
   return newstate;
 }
 const deletePassword = (state,id) => {
   let passwords = state;
   let newstate = passwords.filter (password => password.id!==id);
+  axios.delete(`http://localhost:3004/passManager/${id}`, {
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
   return newstate;
 }
 

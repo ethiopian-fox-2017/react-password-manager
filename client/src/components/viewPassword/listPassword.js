@@ -1,16 +1,13 @@
 import React,{ Component } from 'react'
 import { connect } from 'react-redux';
-import {  Table,Button } from 'semantic-ui-react';
+import {  Table, Button } from 'semantic-ui-react';
 import {fetchPassword} from '../../actions';
 import {filterPassword} from '../../selector'
 import { Link } from 'react-router-dom';
 
 import ContentPassword from './contentPassword'
 
-class ListPassword extends Component {
-  componentDidMount(){
-
-  }
+export class ListPassword extends Component {
   render () {
     const { passwords } = this.props
   if(passwords.length === 0){
@@ -39,7 +36,6 @@ class ListPassword extends Component {
             }
           )}
         </Table.Body>
-
       </Table>
       </div>
     )

@@ -1,4 +1,4 @@
-import { fetchPassword,addPassword,deletePassword,editPassword } from './passwordAction'
+import { fetchPasswordDone,fetchPassword,addPassword,deletePassword,editPassword } from './passwordAction'
 import {searchPassword} from './searchAction';
 
-export { fetchPassword,addPassword,deletePassword,searchPassword,editPassword };
+export { fetchPasswordDone,fetchPassword,addPassword,deletePassword,searchPassword,editPassword };

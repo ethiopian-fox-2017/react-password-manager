@@ -1,5 +1,5 @@
 import React,{ Component }from 'react'
-import { Input, Grid } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import {connect} from 'react-redux';
 
 import {fetchPassword} from '../actions';
@@ -13,7 +13,7 @@ const style = {
   },
 };
 
-class Header extends Component {
+export class Header extends Component {
   componentDidMount(){
     this.props.fetchPassword();
   }
@@ -28,7 +28,6 @@ class Header extends Component {
               <SearchBox/>
            </Grid.Column>
          </Grid>
-         <h2>{this.props.searchKey}</h2>
       </div>
     )
   }
