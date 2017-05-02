@@ -42,7 +42,7 @@ class App extends Component {
   handleCloseAndSwitch = (e, index) => {
     this.setState({
       open: false,
-      current: index
+      current: index,
     })
   }
 
@@ -50,36 +50,30 @@ class App extends Component {
     const Child = this.state.components[this.state.current]
     return (
       <MuiThemeProvider>
-
-          <div>
-            <AppBar
-              title="Password Manager"
-              onLeftIconButtonTouchTap={() => this.handleToggle()}
-              style={styles.AppBar}
-            >
-            </AppBar>
-
-            <Drawer
-              docked={false}
-              width={200}
-              open={this.state.open}
-              onRequestChange={(open) => this.setState({open})}
-            >
-              <MenuItem
-                onTouchTap={(event) => this.handleCloseAndSwitch(event, 0)}>
-                Password List
-              </MenuItem>
-              <MenuItem
-                onTouchTap={(event) => this.handleCloseAndSwitch(event, 1)}
-              >
-                Password Form
-              </MenuItem>
-            </Drawer>
-
-            <Child />
-
-          </div>
-
+        <div>
+          <AppBar
+            title="Password Manager"
+            onLeftIconButtonTouchTap={() => this.handleToggle()}
+            style={styles.AppBar}
+          >
+          </AppBar>
+          <Drawer
+            docked={false}
+            width={200}
+            open={this.state.open}
+            onRequestChange={(open) => this.setState({open})}
+          >
+            <MenuItem
+              onTouchTap={(event) => this.handleCloseAndSwitch(event, 0)}>
+              Password List
+            </MenuItem>
+            <MenuItem
+              onTouchTap={(event) => this.handleCloseAndSwitch(event, 1)}>
+              Password Form
+            </MenuItem>
+          </Drawer>
+          <Child />
+        </div>
       </MuiThemeProvider>
     )
   }

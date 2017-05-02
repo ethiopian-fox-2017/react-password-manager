@@ -5,7 +5,7 @@ import {
   List,
   ListItem } from '../MaterialUi'
 
-export class PasswordChecker extends React.Component {
+class PasswordChecker extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,6 +15,22 @@ export class PasswordChecker extends React.Component {
       minOneNumber: false,
       minFiveLength: false,
     }
+  }
+
+  componentWillMount() {
+    // console.log(this.state, 'will')
+  }
+
+  componentDidMount() {
+    let password = this.props.password
+    let newState = {
+      minOneUpperCase: /[A-Z]/.test(password),
+      minOneLowerCase: /[a-z]/.test(password),
+      minOneSpecialChar: /[^a-zA-Z0-9]/.test(password),
+      minOneNumber: /[0-9]/.test(password),
+      minFiveLength: password.length >= 5,
+    }
+    this.setState(newState)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,6 +43,10 @@ export class PasswordChecker extends React.Component {
       minFiveLength: password.length >= 5,
     }
     this.setState(newState)
+  }
+
+  componentDidUpdate() {
+    // console.log(this.state, 'update')
   }
 
   isStrong() {

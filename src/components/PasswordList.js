@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 import { fetchPasswords, deletePassword, editPassword } from '../actions/passwordAction'
 import { searchKeywords } from '../actions/searchAction'
 import { filterUrlsByKeywords } from '../selectors/passwordList'
-import PasswordChecker from './PasswordChecker'
+
+import PasswordEditDialog from './PasswordEditDialog'
 
 import {
   Dialog,
   FlatButton,
   IconButton,
   Paper,
-  RaisedButton,
   Table,
   TableBody,
   TableHeader,
@@ -27,111 +27,7 @@ const styles = {
   },
   SearchKeywords: {
     marginLeft: 20
-  }
-}
-
-class EditDialog extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      id: 0,
-      url: '',
-      username: '',
-      password: '',
-      createdAt: null,
-      updatedAt: null,
-    }
-  }
-
-  componentDidMount() {
-    // console.log(this.props.password, 'didmount')
-  }
-
-  componentWillReceiveProps(nextProps) {
-    let state = nextProps.password
-    let newState = {...state}
-    this.setState(newState)
-  }
-
-  handleChange(e) {
-    let newState = {}
-    newState[e.target.name] = e.target.value
-    this.setState(newState)
-  }
-
-  onUpdate() {
-    let form = this.state
-    let updatedAt = new Date()
-    let state = {...form, updatedAt}
-    this.props.editPassword(state)
-    this.props.onRequestClose()
-  }
-
-  render() {
-    return (
-      <Dialog
-        actions={[
-          <FlatButton
-            label="Cancel"
-            primary={true}
-            onTouchTap={this.props.onTouchTap}
-          />
-        ]}
-        modal={false}
-        open={this.props.open}
-        onRequestClose={() => this.props.onRequestClose()}
-      >
-
-        <h1>Password Form</h1>
-        <form >
-          <div>
-            <TextField
-              hintText="URL"
-              floatingLabelText="URL"
-              name="url"
-              value={this.state.url}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
-          <div>
-            <TextField
-              hintText="Username"
-              floatingLabelText="Username"
-              name="username"
-              value={this.state.username}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
-          <div>
-            <TextField
-              hintText="Password"
-              floatingLabelText="Password"
-              name="password"
-              type="password"
-              value={this.state.password}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
-
-          <PasswordChecker
-            ref={comp => { this.passwordChecker = comp }}
-            password={this.state.password}
-          />
-
-          <RaisedButton
-            label="Update"
-            onTouchTap={() => this.onUpdate()}
-          />
-          <RaisedButton
-            label="Cancel"
-            onTouchTap={() => this.props.onRequestClose()}
-          />
-        </form>
-
-      </Dialog>
-
-    )
-  }
+  },
 }
 
 export class PasswordList extends React.Component {
@@ -148,7 +44,6 @@ export class PasswordList extends React.Component {
         password: '',
       },
     }
-    this.getData = this.getData.bind(this)
   }
 
   componentDidMount() {
@@ -194,11 +89,7 @@ export class PasswordList extends React.Component {
     newState[e.target.name] = e.target.value
     this.setState(newState)
   }
-
-  getData() {
-    return this.state.editPassword
-  }
-
+  
   renderPasswordItems() {
     return (
       <TableBody displayRowCheckbox={false}>
@@ -251,7 +142,7 @@ export class PasswordList extends React.Component {
         zDepth={2}
       >
 
-        <EditDialog
+        <PasswordEditDialog
           password={this.state.editPassword}
           open={this.state.openEdit}
           onRequestClose={this.handleEditClose}

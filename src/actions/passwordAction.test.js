@@ -10,12 +10,12 @@ const mockStore = configureMockStore(middlewares)
 describe('Test passwordAction', () => {
 
   test('creates FETCH_PASSWORDS when fetching done', async () => {
-    let payload = await axios.get('http://localhost:4000/passwords')
-      .then(res => {
-        return res.data
-      })
+    let payload = await     axios.get(`http://localhost:4000/passwords`)
+          .then(res => {
+            return res.data
+          })
 
-    let expectedActions = [{
+    const expectedActions = [{
       type: 'FETCH_PASSWORDS',
       payload
     }]
