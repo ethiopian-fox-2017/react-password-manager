@@ -1,0 +1,36 @@
+{
+  "passwordsave": [
+    {
+      "url": "http://hacktiv8.com",
+      "username": "laksono",
+      "password": "Admin@1",
+      "createdAt": "2017-04-28T17:08:56.127Z",
+      "updatedAt": "",
+      "id": 1
+    },
+    {
+      "url": "http://yahoo.com",
+      "username": "suryadi",
+      "password": "Admin@2",
+      "createdAt": "2017-04-28T17:09:19.087Z",
+      "updatedAt": "",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "url": "http://jsbin.com",
+      "username": "bruce",
+      "password": "Admin@3",
+      "createdAt": "2017-04-28T17:17:19.288Z",
+      "updatedAt": "2017-04-28T17:18:12.263Z"
+    },
+    {
+      "id": 4,
+      "url": "http://facebook.com",
+      "username": "wayne",
+      "password": "Admin@4",
+      "createdAt": "2017-04-28T18:03:55.616Z",
+      "updatedAt": "2017-04-28T18:08:01.722Z"
+    }
+  ]
+}
