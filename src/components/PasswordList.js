@@ -59,7 +59,9 @@ class PasswordList extends React.Component {
               </tbody>
             </table>
         </center>
-        {this.props.passwords.length === 0 && <h1 style={{color:'red'}}>Data Not Found</h1>}
+        <center>
+          {this.props.passwords.length === 0 && <h1 style={{color:'red'}}>Sorry, data not found.</h1>}
+        </center>
       </div>
     )
   }

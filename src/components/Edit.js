@@ -45,7 +45,7 @@ class Edit extends React.Component {
     const regex2 = new RegExp('^(?=.*[A-Z])')
     const regex3 = new RegExp('^(?=.*[0-9])')
     const regex4 = new RegExp('^(?=.*[!@#$%^&*])')
-    const regex5 = new RegExp('^(?=.{5,})');
+    const regex5 = new RegExp('^(?=.{6,})');
 
     if(!regex1.test(value)){
       this.setState({warning: 'Password at least must have 1 lowercase character'})
@@ -56,7 +56,7 @@ class Edit extends React.Component {
     } else if(!regex4.test(value)) {
       this.setState({warning: 'Password at least must have 1 special character'})
     } else if(!regex5.test(value)) {
-      this.setState({warning: 'Password length at least 5 characters'})
+      this.setState({warning: 'Password length must be more than 5 characters'})
     } else {
       this.setState({warning: ''})
       this.handleClose()
