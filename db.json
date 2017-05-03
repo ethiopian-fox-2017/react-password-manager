@@ -1,0 +1,58 @@
+{
+  "passwords": [
+    {
+      "id": 1,
+      "url": "url",
+      "username": "username",
+      "password": "password"
+    },
+    {
+      "id": 2,
+      "url": "url 2",
+      "username": "username",
+      "password": "password"
+    },
+    {
+      "id": 3,
+      "url": "url_url_url",
+      "username": "username_username",
+      "password": "password"
+    },
+    {
+      "url": "url",
+      "username": "username",
+      "password": "password",
+      "id": 4
+    },
+    {
+      "url": "url",
+      "username": "123",
+      "password": "123",
+      "id": 5
+    },
+    {
+      "url": "adada",
+      "username": "adada",
+      "password": "adadada",
+      "createdAt": "2017-04-29T04:27:18.074Z",
+      "updatedAt": null,
+      "id": 7
+    },
+    {
+      "id": 8,
+      "url": "gtg1234",
+      "username": "gtg23",
+      "password": "gtg",
+      "createdAt": "2017-04-29T04:28:19.290Z",
+      "updatedAt": "2017-04-29T08:06:13.747Z"
+    },
+    {
+      "url": "ada",
+      "username": "ada",
+      "password": "1Aa$hh",
+      "createdAt": "2017-04-30T09:58:39.907Z",
+      "updatedAt": null,
+      "id": 9
+    }
+  ]
+}
