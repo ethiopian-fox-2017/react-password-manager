@@ -1,0 +1,4 @@
+// POSTS
+export const SAVE_PASSWORD = 'SAVE_PASSWORD';
+export const EDIT_PASSWORD = 'EDIT_PASSWORD';
+export const DELT_PASSWORD = 'DELT_PASSWORD';

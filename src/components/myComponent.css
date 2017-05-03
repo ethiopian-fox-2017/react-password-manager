@@ -1,0 +1,30 @@
+.myContainer {
+  max-width: 400px;
+  margin: auto;
+  text-align: left;
+}
+
+table{
+  width: 100%;
+}
+table tr {
+  border: 1px solid black;
+}
+table th {
+  border: 1px solid black;
+  text-align: center;
+}
+table td {
+  border: 1px solid black;
+  padding: 2px;
+}
+
+.red {
+  font-size: 11px;
+  color: red;
+}
+
+.green {
+  font-size: 11px;
+  color: green;
+}
