@@ -18,23 +18,14 @@ class List extends React.Component {
               <th><abbr title="Username">Username</abbr></th>
               <th><abbr title="Password">Password</abbr></th>
               <th><abbr title="Created At">Created At</abbr></th>
+              <th><abbr title="Updated At">Updated At</abbr></th>
+              <th colSpan="2"><abbr title="Option">Option</abbr></th>
             </tr>
           </thead>
-          <tfoot>
-            <tr>
-              <th><abbr title="ID">ID</abbr></th>
-              <th><abbr title="URL">URL</abbr></th>
-              <th><abbr title="Username">Username</abbr></th>
-              <th><abbr title="Password">Password</abbr></th>
-              <th><abbr title="Created At">Created At</abbr></th>
-            </tr>
-          </tfoot>
-          <tbody>
-            { this.props.passwords.map(password => (
+          { this.props.passwords.map(password => (
               <Password key={password.id} password={password} />
             ))
-            }
-          </tbody>
+          }
         </table>
       </div>
 

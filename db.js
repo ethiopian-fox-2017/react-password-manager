@@ -7,7 +7,7 @@ module.exports = () => {
     password: 'admin',
     url: 'www.gog.com',
     createdAt: new Date(),
-    updatedAt: new Date(),
+    updatedAt: '',
   });
   data.users.push({
     id: 2,
@@ -15,7 +15,7 @@ module.exports = () => {
     password: '12345',
     url: 'www.gogcuk.com',
     createdAt: new Date(),
-    updatedAt: new Date(),
+    updatedAt: '',
   });
 
   return data;
