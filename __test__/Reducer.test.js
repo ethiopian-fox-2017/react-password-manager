@@ -1,11 +1,11 @@
-import dataReducer from './reducers/pwReducer'
+import dataReducer from '../src/reducers/pwReducer'
 
 import {
   ADD_DATA,
   EDIT_DATA,
   DELETE_DATA,
   FETCH_DATA_SUCCESS
-} from './constants'
+} from '../src/constants'
 
 describe('Reducer test', () => {
 
@@ -49,7 +49,7 @@ describe('Reducer test', () => {
       username: 'changed',
       password: 'testing',
       createdAt: '01-01-2000',
-      updatedAt: ''
+      updatedAt: new Date().toISOString()
     }
     expect(dataReducer([{
       id: 1,

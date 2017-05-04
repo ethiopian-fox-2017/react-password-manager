@@ -12,13 +12,13 @@ const addData = (state, payload) => {
   } else {
     newId = 1
   }
-  const createdAt = new Date()
+
   const newData = {
     id: newId,
     url: payload.url,
     username: payload.username,
     password: payload.password,
-    createdAt: createdAt.toISOString(),
+    createdAt: payload.createdAt,
     updatedAt: ''
   }
   const newState = [...state, newData]
@@ -31,7 +31,6 @@ const deleteData = (state, id) => {
 }
 
 const editData = (state, payload) => {
-  const updatedAt = new Date()
   const newState = state.map((each) => {
     if(each.id === payload.id) {
       return {
@@ -40,7 +39,7 @@ const editData = (state, payload) => {
         username: payload.username,
         password: payload.password,
         createdAt: payload.createdAt,
-        updatedAt: updatedAt.toISOString()
+        updatedAt: payload.updatedAt
       }
     }
     return each

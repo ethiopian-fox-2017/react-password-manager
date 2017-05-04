@@ -3,14 +3,14 @@ import {
   addDataSuccess,
   editDataSuccess,
   deleteDataSuccess
-} from './actions'
+} from '../src/actions'
 
 import {
   ADD_DATA,
   EDIT_DATA,
   DELETE_DATA,
   FETCH_DATA_SUCCESS
-} from './constants'
+} from '../src/constants'
 
 describe('Action test', () => {
 

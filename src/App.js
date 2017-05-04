@@ -13,6 +13,12 @@ class App extends Component {
             <div className="nav-left">
               <p className="title is-4 nav-item"><Link to="/">Password Manager</Link></p>
             </div>
+            <div className="nav-center">
+              <div className="field is-grouped">
+                <input className="input" type="text" placeholder="Search password..." />
+                <button className="button is-primary">Search</button>
+              </div>
+            </div>
             <div className="nav-right">
               <p className="title is-4 nav-item"><Link to="/add">Add data</Link></p>
             </div>

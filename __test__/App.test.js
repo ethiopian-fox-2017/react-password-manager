@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { Route } from 'react-router'
 
-import App from './App'
-import { Main, Add } from './components'
+import App from '../src/App'
+import { Main, Add } from '../src/components'
 
 describe('Render Test', () => {
 

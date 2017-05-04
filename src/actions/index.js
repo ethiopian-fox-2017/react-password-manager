@@ -1,4 +1,5 @@
 import axios from 'axios'
+import fetch from 'isomorphic-fetch'
 import {
   ADD_DATA,
   EDIT_DATA,
@@ -41,7 +42,7 @@ export const editData = (data) => (
       username: data.username,
       password: data.password,
       createdAt: data.createdAt,
-      updatedAt: new Date()
+      updatedAt: new Date().toISOString()
     }
     axios.put(`http://localhost:3000/users/${data.id}`, editedData)
       .then(() => dispatch(editDataSuccess(editedData)))
@@ -50,15 +51,24 @@ export const editData = (data) => (
 
 export const addData = (data) => (
   (dispatch) => {
-    const newData = { ...data, createdAt: new Date().toISOString(), updatedAt: '' }
-    axios.post('http://localhost:3000/users', newData)
-      .then(() => dispatch(addDataSuccess(data)))
+    const newData = {
+      url: data.url,
+      username: data.username,
+      password: data.password,
+      createdAt: new Date().toISOString(),
+      updatedAt: ''
+    }
+    return fetch('http://localhost:3000/users', {
+      method: 'post',
+      body: JSON.stringify(newData)
+    }).then(() => dispatch(addDataSuccess(newData)))
   }
 )
 
 export const fetchData = () => (
   (dispatch) => {
-    axios.get('http://localhost:3000/users')
-      .then(res => dispatch(fetchDataSuccess(res.data)))
+    return fetch('http://localhost:3000/users')
+      .then(res=> res.json())
+      .then(data => dispatch(fetchDataSuccess(data)))
   }
 )

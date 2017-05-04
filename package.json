@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "enzyme": "^2.8.2",
+    "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -17,7 +18,9 @@
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^6.10.3",
-    "react-scripts": "0.9.5"
+    "nock": "^9.0.13",
+    "react-scripts": "0.9.5",
+    "redux-mock-store": "^1.2.3"
   },
   "scripts": {
     "start": "PORT=8080 react-scripts start",
