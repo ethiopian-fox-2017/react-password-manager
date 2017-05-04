@@ -1,0 +1,19 @@
+.App {
+  padding: 2em;
+}
+
+.data-list {
+  margin-top: 3em;
+}
+
+.add-form {
+  margin: auto;
+}
+
+.edit-btn {
+  margin: 0.25em;
+}
+
+.del-btn {
+  margin: 0.25em;
+}
