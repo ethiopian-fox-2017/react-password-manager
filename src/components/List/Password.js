@@ -12,6 +12,7 @@ class Password extends React.Component {
       username: '',
       password: '',
       updatedAt: new Date(),
+      warning: '',
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -22,6 +23,7 @@ class Password extends React.Component {
       url: '',
       username: '',
       password: '',
+      warning: '',
     });
   }
 
@@ -34,8 +36,40 @@ class Password extends React.Component {
   showEditForm(data) {
     this.setState({
       ...data,
+      warning: '',
       updatedAt: (new Date()).toLocaleString(),
     });
+  }
+
+  verifyPass(pass) {
+    const lowerCase = /^(?=.*[a-z])/;
+    const upperCase = /^(?=.*[A-Z])/;
+    const number = /^(?=.*[0-9])/;
+    const special = /^(?=.*[!@#$%^&*])/;
+    const length = /^(?=.{5,})/;
+
+    if (!lowerCase.test(pass)) {
+      this.setState({ warning: 'Need at least 1 lowercase character' });
+    } else if (!upperCase.test(pass)) {
+      this.setState({ warning: 'Need at least 1 uppercase character' });
+    } else if (!number.test(pass)) {
+      this.setState({ warning: 'Need at least 1 number' });
+    } else if (!special.test(pass)) {
+      this.setState({ warning: 'Need at least 1 special character' });
+    } else if (!length.test(pass)) {
+      this.setState({ warning: 'Need at least 5 character' });
+    } else {
+      this.setState({
+        id: 0,
+        username: '',
+        password: '',
+        url: '',
+        createdAt: new Date(),
+        warning: '',
+      });
+      this.props.editPassword(this.state);
+      this.setStateToNull();
+    }
   }
 
   render() {
@@ -79,8 +113,7 @@ class Password extends React.Component {
             <td>
               <button
                 onClick={() => {
-                  this.props.editPassword(this.state);
-                  this.setStateToNull();
+                  this.verifyPass(this.state.password);
                 }}
                 className="button is-primary is-outlined"
               >Save</button>
@@ -93,6 +126,14 @@ class Password extends React.Component {
                 Cancel
               </button>
             </td>
+            { this.state.warning !== '' ?
+              <div className="notification is-danger">
+                <button className="delete" />
+                {this.state.warning}
+              </div>
+              :
+              <div />
+            }
           </tr>
          :
           <tr>
@@ -118,6 +159,7 @@ class Password extends React.Component {
             </td>
           </tr>
         }
+
       </tbody>
 
 
