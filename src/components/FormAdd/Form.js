@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPassword, getList } from '../../actions';
 
-export class Form extends React.Component {
+class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,6 +12,8 @@ export class Form extends React.Component {
       password: '',
       url: '',
       createdAt: new Date(),
+      warning: '',
+      status: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -23,10 +26,42 @@ export class Form extends React.Component {
     const newPass = {};
     newPass[e.target.name] = e.target.value;
     console.log(newPass);
-    this.setState(newPass);
+    this.setState({ ...newPass, status: false });
+  }
+
+  verifyPass(newPass, passwords, pass) {
+    const lowerCase = /^(?=.*[a-z])/;
+    const upperCase = /^(?=.*[A-Z])/;
+    const number = /^(?=.*[0-9])/;
+    const special = /^(?=.*[!@#$%^&*])/;
+    const length = /^(?=.{5,})/;
+
+    if (!lowerCase.test(pass)) {
+      this.setState({ warning: 'Need at least 1 lowercase character' });
+    } else if (!upperCase.test(pass)) {
+      this.setState({ warning: 'Need at least 1 uppercase character' });
+    } else if (!number.test(pass)) {
+      this.setState({ warning: 'Need at least 1 number' });
+    } else if (!special.test(pass)) {
+      this.setState({ warning: 'Need at least 1 special character' });
+    } else if (!length.test(pass)) {
+      this.setState({ warning: 'Need at least 5 character' });
+    } else {
+      this.setState({
+        id: 0,
+        username: '',
+        password: '',
+        url: '',
+        createdAt: new Date(),
+        warning: '',
+        status: true,
+      });
+      this.props.addPassword(passwords, newPass);
+    }
   }
 
   render() {
+    const { passwords } = this.props;
     return (
       <div>
         <div className="field">
@@ -63,7 +98,7 @@ export class Form extends React.Component {
           <p className="control has-icons-left">
             <input
               className="input"
-              type="password"
+              type="text"
               name="password"
               placeholder="Password"
               onChange={this.handleChange}
@@ -78,12 +113,29 @@ export class Form extends React.Component {
           <p className="control">
             <button
               className="button is-success"
-              onClick={() => { this.props.addPassword(this.props.passwords, this.state); }}
+              onClick={() => { this.verifyPass(this.state, passwords, this.state.password); }}
             >
               Save
             </button>
           </p>
         </div>
+        { this.state.warning !== '' ?
+          <div className="notification is-danger">
+            <button className="delete" />
+            {this.state.warning}
+          </div>
+          :
+          <div />
+        }
+
+        { this.state.status ?
+          <div className="notification is-success">
+            <button className="delete" />
+            Success
+          </div>
+          :
+          <div />
+        }
       </div>
     );
   }
@@ -97,5 +149,11 @@ const dispatchToProps = dispatch => ({
   addPassword: (state, newPass) => dispatch(addPassword(state, newPass)),
   getList: () => dispatch(getList()),
 });
+
+Form.propTypes = {
+  passwords: PropTypes.arrayOf(PropTypes.object).isRequired,
+  getList: PropTypes.func.isRequired,
+  addPassword: PropTypes.func.isRequired,
+};
 
 export default connect(stateToProps, dispatchToProps)(Form);

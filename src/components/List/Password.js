@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { editPassword, deletePassword } from '../../actions';
 
@@ -102,10 +103,10 @@ class Password extends React.Component {
             <td>{(new Date(this.props.password.createdAt)).toLocaleString()}</td>
             <td>{this.props.password.updatedAt}</td>
             <td>
-             <button
-               onClick={() => this.showEditForm(this.props.password)}
-               className="button is-primary is-outlined"
-             >Edit</button>
+              <button
+                onClick={() => this.showEditForm(this.props.password)}
+                className="button is-primary is-outlined"
+              >Edit</button>
             </td>
             <td>
               <button
@@ -128,5 +129,11 @@ const dispatchToProps = dispatch => ({
   editPassword: data => dispatch(editPassword(data)),
   deletePassword: data => dispatch(deletePassword(data)),
 });
+
+Password.propTypes = {
+  deletePassword: PropTypes.func.isRequired,
+  editPassword: PropTypes.func.isRequired,
+  password: PropTypes.objectOf().isRequired,
+};
 
 export default connect(null, dispatchToProps)(Password);

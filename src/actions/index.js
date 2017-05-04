@@ -40,9 +40,9 @@ export const editPassword = editData => (
 export const deletePassword = id => (
   dispatch => (
     axios.delete(`http://localhost:3004/users/${id}`)
-         .then(res => dispatch(deletePasswordSuccess(id)))
+         .then(() => dispatch(deletePasswordSuccess(id)))
   )
-)
+);
 
 export const addPassword = (state, newPass) => {
   const ids = state.map(pass => pass.id);
@@ -56,7 +56,6 @@ export const addPassword = (state, newPass) => {
     dispatch => (
       axios.post('http://localhost:3004/users', theRealNewPass)
       .then(res => dispatch(addPasswordSuccess(res.data)))
-      .catch((err) => { console.log(err); })
     )
   );
 };

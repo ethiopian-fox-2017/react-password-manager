@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getList } from '../../actions';
 import Password from './Password';
 
@@ -23,7 +24,7 @@ class List extends React.Component {
             </tr>
           </thead>
           { this.props.passwords.map(password => (
-              <Password key={password.id} password={password} />
+            <Password key={password.id} password={password} />
             ))
           }
         </table>
@@ -40,5 +41,10 @@ const stateToProps = state => ({
 const dispatchToProps = dispatch => ({
   getList: () => dispatch(getList()),
 });
+
+List.propTypes = {
+  getList: PropTypes.func.isRequired,
+  passwords: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default connect(stateToProps, dispatchToProps)(List);
