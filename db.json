@@ -1,0 +1,48 @@
+{
+  "passwords": [
+    {
+      "id": 7,
+      "username": "ridhosaja",
+      "url": "facebuuk",
+      "password": "12345",
+      "createdAt": "2017-05-01T12:29:41.265Z",
+      "updatedAt": "2017-05-01T12:29:41.265Z",
+      "errors": []
+    },
+    {
+      "url": "google.com",
+      "username": "ridhosatu",
+      "password": "1234",
+      "errors": [],
+      "createdAt": "2017-05-01T12:31:44.683Z",
+      "updatedAt": "2017-05-01T12:31:44.683Z",
+      "id": 8
+    },
+    {
+      "url": "yahuy",
+      "username": "ridhoaja",
+      "password": "12345",
+      "errors": [],
+      "createdAt": "2017-05-01T12:32:53.048Z",
+      "updatedAt": "2017-05-01T12:32:53.048Z",
+      "id": 9
+    }
+  ],
+  "access": [
+    {
+      "id": 0,
+      "username": "ridho",
+      "password": "testing"
+    },
+    {
+      "id": 1,
+      "username": "apa",
+      "password": "coba"
+    },
+    {
+      "username": "testing",
+      "password": "dulu",
+      "id": 2
+    }
+  ]
+}
