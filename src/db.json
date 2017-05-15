@@ -1,0 +1,20 @@
+{
+  "datas": [
+    {
+      "url": "http://tutplus.com",
+      "username": "danielags",
+      "password": "Dan!$94",
+      "createdAt": "2017-04-30T10:08:22.476Z",
+      "updatedAt": "",
+      "id": 1
+    },
+    {
+      "url": "http://envato.com",
+      "username": "agustoo",
+      "password": "agus12@#D",
+      "createdAt": "2017-04-30T10:08:51.141Z",
+      "updatedAt": "",
+      "id": 2
+    }
+  ]
+}
