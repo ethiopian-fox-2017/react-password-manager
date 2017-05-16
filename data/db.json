@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "url": "https://www.salsabilla.com",
+      "username": "Salsabilla",
+      "password": "salsabilla",
+      "createdAt": "2017-05-01T06:42:58.665Z",
+      "updatedAt": "2017-05-01T06:42:58.665Z",
+      "id": 1
+    },
+    {
+      "url": "https://www.salsabilla.com",
+      "username": "Firman",
+      "password": "firman",
+      "createdAt": "2017-05-01T08:14:49.680Z",
+      "updatedAt": "2017-05-01T08:14:49.680Z",
+      "id": 2
+    },
+    {
+      "url": "arfanizar",
+      "username": "arfanizar",
+      "password": "Aa12@",
+      "createdAt": "2017-05-03T23:35:44.864Z",
+      "updatedAt": "2017-05-03T23:35:44.864Z",
+      "id": 3
+    }
+  ]
+}
