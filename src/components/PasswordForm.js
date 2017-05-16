@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 
 import './myComponent.css';
-import { savePassword } from '../actions'
+import { fetchSavePassword } from '../actions'
 
 export class PasswordForm extends Component {
   constructor(props){
@@ -22,9 +22,14 @@ export class PasswordForm extends Component {
   }
 
   saveForm(e){
-    e.preventDefault()
-    const newProfile = this.state;
-    this.props.savePassword(newProfile);
+    if(this.checkUppercase() && this.checkLowercase() && this.checkSpecialChar() && this.checkNumber() && this.checkLength()){
+      e.preventDefault()
+      const newProfile = this.state;
+      this.props.fetchSavePassword(newProfile);
+    } else {
+      e.preventDefault()
+      alert('password wrong');
+    }
   }
 
   handleChange(e){
@@ -49,7 +54,7 @@ export class PasswordForm extends Component {
   }
 
   checkSpecialChar(){
-    let patt  = /[!@#$%^&*()_+-=[]{};':"|,.<>\/?]/g
+    let patt  = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g
     let str   = this.state.password
     let check = patt.test(str)
     return check
@@ -63,7 +68,7 @@ export class PasswordForm extends Component {
   }
 
   checkLength(){
-    if(this.state.password.length >= 5){
+    if(this.state.password.length > 5){
       return true
     } else {
       return false
@@ -72,13 +77,13 @@ export class PasswordForm extends Component {
 
   render() {
     return (
-      <div className='myContainer'>
+      <div className='box myContainer'>
         <form onSubmit={(e) => this.saveForm(e)}>
-          <div className="form-group">
+          <div className="field">
             <label htmlFor="urlForm">URL</label>
             <input
             type="text"
-            className="form-control"
+            className="input"
             id="urlForm"
             name="url"
             value={this.state.url}
@@ -86,11 +91,11 @@ export class PasswordForm extends Component {
             placeholder="url..."
             />
           </div>
-          <div className="form-group">
+          <div className="field">
             <label htmlFor="usernameForm">Username</label>
             <input
             type="text"
-            className="form-control"
+            className="input"
             id="usernameForm"
             name="username"
             value={this.state.username}
@@ -98,11 +103,11 @@ export class PasswordForm extends Component {
             placeholder="username..."
             />
           </div>
-          <div className="form-group">
+          <div className="field">
             <label htmlFor="passwordForm">Password</label>
             <input
             type="password"
-            className="form-control"
+            className="input"
             id="passwordForm"
             name="password"
             value={this.state.password}
@@ -113,7 +118,7 @@ export class PasswordForm extends Component {
           <button
           id="saveButton"
           type="submit"
-          className="btn btn-primary"
+          className="button is-primary"
           >Save</button>
         </form>
         <br />
@@ -150,7 +155,7 @@ export class PasswordForm extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    savePassword: (newProfile) => dispatch(savePassword(newProfile))
+    fetchSavePassword: (newProfile) => dispatch(fetchSavePassword(newProfile))
   }
 }
 

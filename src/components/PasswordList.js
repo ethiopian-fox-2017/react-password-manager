@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './myComponent.css';
-import { editPassword, deletePassword } from '../actions'
+import { editPassword, deletePassword, fetchUserData } from '../actions'
 
 class PasswordList extends Component {
   constructor(props){
@@ -19,6 +19,10 @@ class PasswordList extends Component {
     this.actionEdit = this.actionEdit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.saveEdit = this.saveEdit.bind(this);
+  }
+
+  componentDidMount(){
+    this.props.fetchUserData();
   }
 
   actionEdit(item){
@@ -115,6 +119,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchUserData: () => dispatch(fetchUserData()),
     editPassword: (updProfile) => dispatch(editPassword(updProfile)),
     deletePassword: (itemId) => dispatch(deletePassword(itemId))
   };

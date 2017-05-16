@@ -1,8 +1,11 @@
-import { SAVE_PASSWORD, EDIT_PASSWORD, DELT_PASSWORD } from '../actions/constants';
-const initialState = [
-  {id: 1, url: 'www.google.com', username: 'admin', password: '12345'},
-  {id: 2, url: 'www.facebook.com', username: 'admin', password: '12345'},
-]
+import { GET_PASSWORD, SAVE_PASSWORD, EDIT_PASSWORD, DELT_PASSWORD } from '../actions/constants';
+
+const initialState = []
+
+const getPassword = (state,data) => {
+  const newState = data
+  return newState;
+}
 
 const savePassword = (state, newItem) => {
   const { url, username, password } = newItem;
@@ -42,6 +45,7 @@ const deletePassword = (state,itemId) => {
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_PASSWORD: return getPassword(state, action.payload)
     case SAVE_PASSWORD: return savePassword(state, action.payload)
     case EDIT_PASSWORD: return editPassword(state, action.payload)
     case DELT_PASSWORD: return deletePassword(state, action.payload)
